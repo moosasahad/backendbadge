@@ -15,6 +15,12 @@ mongoose.connect("mongodb+srv://sahdaccoun32:moosa%40321@cluster0.dgvef.mongodb.
     console.log('connecting error',error);
     
 })
+const logger = (req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+  };
+  app.use(logger)
+  
 const PORT = 2000
 app.listen(PORT,()=>{
     console.log("server runned at ",PORT);
